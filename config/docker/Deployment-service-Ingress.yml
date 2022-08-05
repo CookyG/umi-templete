@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${TAG}
+  namespace: default
+  labels:
+    app: ${TAG}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ${TAG}
+  template:
+    metadata:
+      labels:
+        app: ${TAG}
+    spec:
+      containers:
+        - name: ${TAG}
+          imagePullPolicy: Always
+          image: 192.168.0.78/my-test/${TAG}:v1
+          ports:
+            - containerPort: 80
+              hostPort: ${PORT}
+      imagePullSecrets:
+        - name: harbor-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${TAG}-service
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+    - name: my${PORT}
+      port: ${PORT}
+      targetPort: 80
+      nodePort: ${PORT}
+  selector:
+    app: ${TAG}

@@ -3,13 +3,14 @@
   "author": "name <mail@example.com>",
   "scripts": {
     "build": "max build",
-    "dev": "max dev",
+    "dev": "cross-env REACT_APP_ENV=dev UMI_ENV=dev max dev",
     "format": "prettier --cache --write .",
     "postinstall": "max setup",
     "prepare": "husky install",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx ./src/**/*",
     "setup": "max setup",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "start:test": "cross-env REACT_APP_ENV=test UMI_ENV=dev max dev"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
@@ -26,12 +27,13 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.2",
     "@types/uuid": "^8.3.4",
+    "cross-env": "^7.0.3",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "prettier-plugin-organize-imports": "^2.3.4",
     "prettier-plugin-packagejson": "^2.2.18",
-    "tailwindcss": "^3.1.6",
+    "tailwindcss": "^3",
     "typescript": "^4.7.4"
   }
 }

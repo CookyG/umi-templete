@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  web:
+    image: ${TAG}-img
+    container_name: ${TAG}
+    build: .
+    restart: always
+    networks:
+      - ashermed-network
+    ports:
+      - ${PORT}:80
+networks:
+  ashermed-network:
+    external: true
