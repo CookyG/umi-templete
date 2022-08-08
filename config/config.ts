@@ -1,7 +1,5 @@
 import { defineConfig } from '@umijs/max'
 
-import { join } from 'path'
-
 // 路由相关配置
 import Routes from '../router'
 
@@ -13,6 +11,9 @@ import AntdBase from './antd'
 
 // proxy 相关配置
 import proxy from './proxy'
+
+//openApi 相关配置
+import { openAPIData } from './api'
 
 // docker 相关配置
 const DOCKERFILES = [
@@ -26,19 +27,6 @@ const { REACT_APP_ENV } = process.env
 const PROD = process.env.NODE_ENV === 'production'
 
 const DEV = process.env.NODE_ENV === 'development'
-
-export const openAPIData = [
-  {
-    requestLibPath: "import { request } from '@umijs/max'",
-    schemaPath: join(__dirname, 'swagger.json'),
-    projectName: 'als',
-  },
-  {
-    requestLibPath: "import { request } from '@umijs/max'",
-    schemaPath: 'http://epchbv.ashermed.cn/ClinicalProtocol/swagger/v1/swagger.json',
-    projectName: 'asm',
-  },
-]
 
 export default defineConfig({
   // 路由路径
