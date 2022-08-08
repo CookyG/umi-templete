@@ -1,5 +1,6 @@
 {
   "private": true,
+  "name": "ashermed",
   "author": "name <mail@example.com>",
   "scripts": {
     "build": "max build",
@@ -8,9 +9,11 @@
     "postinstall": "max setup",
     "prepare": "husky install",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx ./src/**/*",
+    "openapi": "max openapi",
     "setup": "max setup",
     "start": "npm run dev",
-    "start:test": "cross-env REACT_APP_ENV=test UMI_ENV=dev max dev"
+    "start:test": "cross-env REACT_APP_ENV=test UMI_ENV=dev max dev",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
@@ -27,6 +30,8 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.2",
     "@types/uuid": "^8.3.4",
+    "@umijs/max-plugin-openapi": "^1.0.5",
+    "@umijs/openapi": "^1.7.0",
     "cross-env": "^7.0.3",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
@@ -34,6 +39,12 @@
     "prettier-plugin-organize-imports": "^2.3.4",
     "prettier-plugin-packagejson": "^2.2.18",
     "tailwindcss": "^3",
-    "typescript": "^4.7.4"
+    "typescript": "^4",
+    "jest": "^27",
+    "@types/jest": "^27",
+    "ts-node": "^10",
+    "@testing-library/react": "^13",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@types/testing-library__jest-dom": "^5.14.5"
   }
 }

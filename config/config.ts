@@ -1,5 +1,7 @@
 import { defineConfig } from '@umijs/max'
 
+import { join } from 'path'
+
 // 路由相关配置
 import Routes from '../router'
 
@@ -22,6 +24,21 @@ const DOCKERFILES = [
 const { REACT_APP_ENV } = process.env
 
 const PROD = process.env.NODE_ENV === 'production'
+
+const DEV = process.env.NODE_ENV === 'development'
+
+export const openAPIData = [
+  {
+    requestLibPath: "import { request } from '@umijs/max'",
+    schemaPath: join(__dirname, 'swagger.json'),
+    projectName: 'als',
+  },
+  {
+    requestLibPath: "import { request } from '@umijs/max'",
+    schemaPath: 'http://epchbv.ashermed.cn/ClinicalProtocol/swagger/v1/swagger.json',
+    projectName: 'asm',
+  },
+]
 
 export default defineConfig({
   // 路由路径
@@ -71,4 +88,14 @@ export default defineConfig({
   deadCode: {},
 
   copy: [...DOCKERFILES],
+
+  // openAPI配置
+  // 因为在本地开发报错，所以过滤openAPI
+  ...(DEV
+    ? {}
+    : {
+        openAPI: openAPIData,
+      }),
+
+  plugins: ['@umijs/max-plugin-openapi'],
 })
