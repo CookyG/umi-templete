@@ -2,7 +2,7 @@ import { ConfigProvider } from 'antd'
 
 ConfigProvider.config({
   theme: {
-    primaryColor: '#0097E1',
+    primaryColor: '#5B97E3',
   },
 })
 

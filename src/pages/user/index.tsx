@@ -1,12 +1,11 @@
 import { Outlet } from '@umijs/max'
 
-const Home = () => {
+const User = () => {
   return (
-    <div className="home">
-      home
+    <div className="login w-full h-full">
       <Outlet />
     </div>
   )
 }
 
-export default Home
+export default User

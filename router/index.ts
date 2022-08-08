@@ -1,6 +1,9 @@
+import User from './modules/user'
+
 import HomeRouter from './modules/home'
 
 const routerArr = [
+  ...User,
   {
     path: '/',
     component: '@/pages/index',
