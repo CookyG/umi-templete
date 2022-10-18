@@ -66,6 +66,8 @@ export default defineConfig({
 
   tailwindcss: {},
 
+  mfsu: { strategy: 'normal' },
+
   // unocss 配置
   // plugins: [require.resolve('@umijs/plugins/dist/unocss')],
   // unocss: {
